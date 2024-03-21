@@ -1,28 +1,44 @@
-const { SingleProduct } = require("../Models/Product")
-const {uploadImages, uploadThumbnail} = require("./uploadImages")
+const { SingleProduct } = require("../Models/Product");
+const { uploadImages, uploadThumbnail } = require("./uploadImages");
 
-const singleProductUploader = async (req,res)=>{
-    console.log(req.body)
-    console.log(req.files)
+const singleProductUploader = async (req, res) => {
+    console.log(req.body);
+    console.log(req.files);
 
-    const body = req.body
+    const body = req.body;
 
-    const imagesURLs = await uploadImages(req.files.images)
-    const thumbnailURL = await uploadImages.uploadThumbnail
+    try {
+        const imagesURLs = await uploadImages(req.files.images);
+        const thumbnailURL = await uploadThumbnail(req.files.thumbnail[0]);
 
-    const newSingleProduct = new SingleProduct({
-        title: body.title,
-        description: body.description,
-        images: imagesURLs,
-        thumbnail: thumbnailURL,
-        price: body.price
-    })
+        const newSingleProduct = new SingleProduct({
+            title: body.title,
+            description: body.description,
+            images: imagesURLs,
+            thumbnail: thumbnailURL,
+            price: body.price
+        });
 
-    const savedSingleProduct = await newSingleProduct.save()
+        const savedSingleProduct = await newSingleProduct.save();
 
-    console.log("savedSingleProduct")
-    console.log(savedSingleProduct)
-    res.send("single product uploader")
-}
+        console.log("savedSingleProduct");
+        console.log(savedSingleProduct);
+        
+        // Send a success response with uploaded URLs
+        res.status(200).json({
+            success: true,
+            message: "Single product uploaded successfully",
+            product: savedSingleProduct
+        });
+    } catch (error) {
+        console.error("Error uploading single product:", error);
+        // Send an error response
+        res.status(500).json({
+            success: false,
+            message: "Error uploading single product",
+            error: error.message
+        });
+    }
+};
 
 module.exports = singleProductUploader;
