@@ -10,12 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(
-  cors({
-    origin: "*",
-    // methods: ["GET","HEAD","PUT","PATCH","POST","DELETE"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-  })
+  cors()
 );
 
 
