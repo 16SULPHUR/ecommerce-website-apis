@@ -3,7 +3,7 @@ const { uploadImages, uploadThumbnail } = require("./uploadImages");
 
 const singleProductUploader = async (req, res) => {
     console.log(req.body);
-    console.log(req.files);
+    // console.log(req.files);
 
     const body = req.body;
 
