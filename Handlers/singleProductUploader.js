@@ -1,21 +1,12 @@
 const { SingleProduct } = require("../Models/Product");
-const { uploadImages, uploadThumbnail } = require("./uploadImages");
 
 const singleProductUploader = async (req, res) => {
-    console.log(req.body);
-    // console.log(req.files);
-
-    const body = req.body;
+    const body = req.query;
 
     try {
-        // const imagesURLs = await uploadImages(req.files.images);
-        // const thumbnailURL = await uploadThumbnail(req.files.thumbnail[0]);
-
         const newSingleProduct = new SingleProduct({
             title: body.title,
             description: body.description,
-            // images: imagesURLs,
-            // thumbnail: thumbnailURL,
             price: body.price
         });
 
