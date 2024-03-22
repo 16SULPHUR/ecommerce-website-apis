@@ -11,11 +11,14 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const connect = async()=>{
+const connect = async ()=>{
   await mongoose
     .connect(
-      "mongodb+srv://akpatil51340:Ankit5134@cluster0.4vncxmi.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+      "mongodb+srv://akpatil51340:%40Ankit2005@cluster0.rwylpqs.mongodb.net/vh?retryWrites=true&w=majority&appName=cluster0"
     )
+    // .connect(
+    //   "mongodb+srv://akpatil51340:Ankit5134@cluster0.4vncxmi.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+    // )
     .then(() => {
       console.log("Connected to DB");
     })
