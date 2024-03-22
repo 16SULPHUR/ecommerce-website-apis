@@ -11,17 +11,20 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+const connect = async()=>{
+  await mongoose
+    .connect(
+      "mongodb+srv://akpatil51340:Ankit5134@cluster0.4vncxmi.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+    )
+    .then(() => {
+      console.log("Connected to DB");
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}
 
-mongoose
-  .connect(
-    "mongodb+srv://akpatil51340:Ankit5134@cluster0.4vncxmi.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
-  )
-  .then(() => {
-    console.log("Connected to DB");
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+connect()
 
 app.get("/", async (req, res) => {
   res.json({
