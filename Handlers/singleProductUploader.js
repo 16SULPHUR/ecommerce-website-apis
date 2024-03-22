@@ -8,14 +8,14 @@ const singleProductUploader = async (req, res) => {
     const body = req.body;
 
     try {
-        const imagesURLs = await uploadImages(req.files.images);
-        const thumbnailURL = await uploadThumbnail(req.files.thumbnail[0]);
+        // const imagesURLs = await uploadImages(req.files.images);
+        // const thumbnailURL = await uploadThumbnail(req.files.thumbnail[0]);
 
         const newSingleProduct = new SingleProduct({
             title: body.title,
             description: body.description,
-            images: imagesURLs,
-            thumbnail: thumbnailURL,
+            // images: imagesURLs,
+            // thumbnail: thumbnailURL,
             price: body.price
         });
 
