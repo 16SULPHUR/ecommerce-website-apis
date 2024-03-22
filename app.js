@@ -38,10 +38,16 @@ app.get("/", async (req, res) => {
 const addProductRouter = require("./Routes/addProduct")
 const getAllProductsRouter = require("./Routes/getAllProducts")
 const addThumbnailRouter = require("./Routes/addThumbnail")
+const getProductRouter = require("./Routes/getProduct")
+const deleteProductRouter = require("./Routes/deleteProduct")
+const addImagesRouter = require("./Routes/addImages")
 
 app.use("/addProduct", addProductRouter)
 app.use("/getAllProducts", getAllProductsRouter) 
 app.use("/addThumbnail", addThumbnailRouter) 
+app.use("/getProduct", getProductRouter) 
+app.use("/deleteProduct", deleteProductRouter) 
+app.use("/addImages", addImagesRouter) 
 
 app.listen(PORT, () => {
   console.info(`Running on http://127.0.0.1:${PORT}`);

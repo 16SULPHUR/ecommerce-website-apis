@@ -3,6 +3,8 @@ const { SingleProduct } = require("../Models/Product");
 const singleProductUploader = async (req, res) => {
     const body = req.query;
 
+    
+
     try {
         const newSingleProduct = new SingleProduct({
             title: body.title,

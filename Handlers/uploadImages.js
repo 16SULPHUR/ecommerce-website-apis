@@ -18,8 +18,8 @@ const uploadImage = async (image) => {
           console.error(error);
           reject(error);
         } else {
-          console.log(result);
-          resolve(result.url);
+          // console.log(result);
+          resolve(result);
         }
       }
     );
@@ -53,7 +53,7 @@ const uploadImages = async (images) => {
 
 const uploadThumbnail = async (thumbnail) => {
   const thumbnailURL = await uploadImage(thumbnail);
-  return thumbnailURL;
+  return thumbnailURL.thumbnailUrl;
 };
 
-module.exports = { uploadImages, uploadThumbnail };
+module.exports = { uploadImages, uploadThumbnail, uploadImage };
