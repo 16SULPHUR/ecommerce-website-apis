@@ -7,21 +7,25 @@ var imagekit = new ImageKit({
 });
 
 const uploadImage = async (image) => {
-  const file = imagekit.upload(
-    {
-      file: image.buffer, //required
-      fileName: "my_file_name.jpg", //required
-      tags: ["tag1", "tag2"],
-    },
-    function (error, result) {
-      if (error) console.log(error);
-      else console.log(result);
-    }
-  );
-
-  console.log(file.url);
-  return file.url;
+  return new Promise((resolve, reject) => {
+    imagekit.upload(
+      {
+        file: image.buffer, // required
+        fileName: image.originalname, // required
+      },
+      function (error, result) {
+        if (error) {
+          console.error(error);
+          reject(error);
+        } else {
+          console.log(result);
+          resolve(result.url);
+        }
+      }
+    );
+  });
 };
+
 
 // const uploadImage = async (image) => {
 //   const { uploadFile } = await import("@uploadcare/upload-client");
