@@ -9,7 +9,9 @@ const singleProductUploader = async (req, res) => {
         const newSingleProduct = new SingleProduct({
             title: body.title,
             description: body.description,
-            price: body.price
+            price: body.price,
+            discountedPrice: body.discountedPrice,
+            catagory: body.category
         });
 
         const savedSingleProduct = await newSingleProduct.save();
