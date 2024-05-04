@@ -32,6 +32,10 @@ const SingleProductSchema = new mongoose.Schema({
   price: Number,
   discountedPrice: Number,
   catagory: String,
+  likes:{
+    type:Number,
+    default: 0
+  }
 });
 
 const VarientSchema = new mongoose.Schema({

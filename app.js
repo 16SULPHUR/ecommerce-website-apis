@@ -41,6 +41,8 @@ const addThumbnailRouter = require("./Routes/addThumbnail");
 const getProductRouter = require("./Routes/getProduct");
 const deleteProductRouter = require("./Routes/deleteProduct");
 const addImagesRouter = require("./Routes/addImages");
+const addCatagoryRouter = require("./Routes/addCatagory");
+const signupRouter = require("./Routes/signup");
 
 app.use("/addProduct", addProductRouter);
 app.use("/getAllProducts", getAllProductsRouter);
@@ -48,6 +50,8 @@ app.use("/addThumbnail", addThumbnailRouter);
 app.use("/getProduct", getProductRouter);
 app.use("/deleteProduct", deleteProductRouter);
 app.use("/addImages", addImagesRouter);
+app.use("/addCatagory", addCatagoryRouter);
+app.use("/signup", signupRouter);
 
 const url = "https://api.phone.email/v1/sendmail";
 const apiKey = "Kt2ZhlZ0blszcUyNWZpOGv0Cs99MPeVW";
